@@ -6,6 +6,11 @@
 	import Nav from '../lib/components/Nav.svelte'
 </script>
 
+<svelte:head>
+	<title>Streamed Data</title>
+	<meta name="description" content="Streamed Data" />
+</svelte:head>
+
 <div class="grid">
 	<main class="hero h-full bg-base-200">
 		{#key $page.url.pathname}

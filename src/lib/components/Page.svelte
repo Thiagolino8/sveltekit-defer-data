@@ -1,5 +1,8 @@
 <script lang="ts">
 	import { browser } from '$app/environment'
+	import {page} from '$app/stores'
+  import { routes } from '$lib/helpers/routes'
+
 	interface PageData {
 		awaited: number
 		streamed: {
@@ -9,9 +12,12 @@
 
 	export let data: PageData
 
+	$: title = routes.get($page.url.pathname as keyof typeof routes.keys)
+
 	let initialTime = new Date().getTime()
 </script>
 
+<h1 class="text-3xl font-bold">Running on {title}</h1>
 <p>
 	Awaited date: {#if browser}<span class="text-teal-400">{initialTime - data.awaited}</span>{:else}<span
 			class="text-orange-500">...loading</span
